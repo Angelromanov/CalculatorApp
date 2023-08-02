@@ -12,67 +12,53 @@ function buttonsClick(e){
         if(second === '' && sign === ''){
             first+=key;
             calc.value +=key;
-        } else if(first!=='' && second!=='' && sign ==''){
+            console.log(first, second, sign)
+        } else if(first!=='' && second!=='' && sign ===''){
             calc.value +=key;
+            console.log(first, second, sign)
         } else{
             second+=key;
             calc.value +=key;
+            console.log(first, second, sign)
         }
     } else if(operation.includes(key)){
         if(key === 'C'){
             first = '', second = '', sign= '', results ='';
             calc.value = '';
+            console.log(first, second, sign)
         } else if(first!=='' && second!==''){
             switch(sign){
                 case '÷':{
                     results = first/second;
-                    calc.value = results;
-                    sign = key;
-                    if(key !== '=') calc.value +=key;
-                    first = results;
-                    second = '';
                     break;
                 }
                 case '%':{
                     results = first%second;
-                    calc.value = results;
-                    sign = key;
-                    if(key !== '=') calc.value +=key;
-                    first = results;
-                    second = ''
                     break;
                 }
                 case '✕':{
                     results = first*second;
-                    calc.value = results;
-                    sign = key;
-                    if(key !== '=') calc.value +=key;
-                    first = results;
-                    second = ''
                     break;
                 }
                 case '+':{
                     results = +first+ +second;
-                    calc.value = results;
-                    sign = key;
-                    if(key !== '=') calc.value +=key;
-                    first = results;
-                    second = ''
                     break;
                 }
                 case '−':{
                     results = first-second;
-                    calc.value = results;
-                    sign = key;
-                    if(key !== '=') calc.value +=key;
-                    first = results;
-                    second = ''
                     break;
                 }
             }
+            calc.value = results;
+            sign = key;
+            key === '=' ? sign = '' : calc.value +=key;
+            first = results;
+            second = ''
+            console.log(first, second, sign)
         } else{
             sign = key;
             calc.value += key;
+            console.log(first, second, sign)
         }
     }
 }
