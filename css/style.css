@@ -16,7 +16,7 @@ body{
     gap: 5px;
 }
 
-.grid > button:last-child{
+.grid> button:last-child{
     grid-column-start: 3;
     grid-column-end: 5;
 }
@@ -53,5 +53,9 @@ body{
     font-weight: bold;
     font-size: 24px;
     background-color: rgb(38, 50, 87);
+}
+
+.btn:active{
+    border: 3px inset rgb(24, 31, 52);
 }
 
