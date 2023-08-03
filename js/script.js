@@ -2,14 +2,25 @@ const buttons = document.querySelector('.grid');
 const calc = document.querySelector('.calc')
 
 const darkTheme = document.querySelectorAll('[data-theme]')
-const theme = document.querySelector('body')
+const theme = document.querySelector('html')
+
+if(localStorage.getItem('tema')){
+    if(localStorage.getItem('tema') === 'dark') darkTheme[1].setAttribute('checked', 'checked');
+    else darkTheme[2].setAttribute('checked', 'checked');
+    theme.setAttribute('data-theme', localStorage.getItem('tema'));
+} else {
+    darkTheme[1].setAttribute('checked', 'checked');
+    theme.setAttribute('data-theme', 'dark');
+}
 
 darkTheme.forEach(toggle => {
     toggle.addEventListener('click', e => {
         if (toggle.getAttribute('data-theme') === 'dark') {
+            localStorage.setItem('tema', 'dark');
             theme.setAttribute('data-theme', 'dark')
         }
         if (toggle.getAttribute('data-theme') === 'light') {
+            localStorage.setItem('tema', 'light');
             theme.setAttribute('data-theme', 'light')
         }
     })
