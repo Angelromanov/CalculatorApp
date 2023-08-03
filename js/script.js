@@ -1,6 +1,20 @@
 const buttons = document.querySelector('.grid');
 const calc = document.querySelector('.calc')
 
+const darkTheme = document.querySelectorAll('[data-theme]')
+const theme = document.querySelector('body')
+
+darkTheme.forEach(toggle => {
+    toggle.addEventListener('click', e => {
+        if (toggle.getAttribute('data-theme') === 'dark') {
+            theme.setAttribute('data-theme', 'dark')
+        }
+        if (toggle.getAttribute('data-theme') === 'light') {
+            theme.setAttribute('data-theme', 'light')
+        }
+    })
+})
+
 const number = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '0', '.'];
 const operation = ['C', '÷', '%', '←', '×', '−', '+', '=']
 let first = '', second = '', sign= '', results;
@@ -17,7 +31,7 @@ function clickNumber(key){
             console.log(first, second, sign)
         }
     } else{
-        if(first !== '' && !first.includes('.')){
+        if(first !== '' && !String(first).includes('.')){
             first+=key;
             calc.value +=key;
             console.log(first, second, sign)
@@ -74,6 +88,7 @@ function clickOperation(key){
                 break;
             }
         }
+        if(String(first).includes('.')) first = +first.toFixed(4)
         calc.value = first;
         sign = key;
         key === '=' ? sign = '' : calc.value +=key;

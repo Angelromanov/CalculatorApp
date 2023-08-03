@@ -6,8 +6,23 @@
     <link rel="stylesheet" href="./css/style.css">
     <title>Calculator</title>
 </head>
-<body>
+<body data-theme="dark" id="theme">
     <div class="wrap">
+
+        <div class="app__theme">
+            <div class="app__switcher">
+                <div class="app__toggles">
+                    <label for="dark-theme">
+                        <input class="app__toggle" data-theme="dark" type="radio" id="dark-theme" name="theme" checked>
+                    </label>
+
+                    <label for="light-theme">
+                        <input class="app__toggle" data-theme="light" type="radio" id="light-theme" name="theme">
+                    </label>
+                </div>
+            </div>
+        </div>
+
         <input type="text" class="calc" disabled>
         <div class="grid">
             <button type="button" class="btn">C</button>

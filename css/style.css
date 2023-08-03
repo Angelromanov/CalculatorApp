@@ -1,14 +1,34 @@
+[data-theme=dark] {
+    --color-bg-body: rgb(86, 102, 148);
+    --text-color: #FFFFFF;
+    --color-bg-wrap: rgb(24, 31, 52);
+    --color-bg-btn: rgb(38, 50, 87);
+    --color-toggle-bg: #000000;
+    --color-toggle: rgb(238, 241, 166);
+    --color-border:rgb(24, 31, 52);
+  }
+  
+  [data-theme=light] {
+    --color-bg-body: rgb(225, 225, 172);
+    --text-color: #000000;
+    --color-bg-wrap: #FFFFFF;
+    --color-bg-btn: rgb(235, 236, 209);
+    --color-toggle-bg: rgb(238, 241, 166);
+    --color-toggle: #000000;
+    --color-border:rgb(196, 206, 238);
+  }
+
 body{
-    background-color: rgb(86, 102, 148);
+    background-color: var(--color-bg-body);
     color: white;
     height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
+    overflow: hidden;
 }
 
 .grid{
-    background-color: rgb(24, 31, 52);
     display: grid;
     width: 100%;
     grid-template-columns: repeat(4, 1fr);
@@ -22,18 +42,21 @@ body{
 }
 
 .wrap{
+    background-color: var(--color-bg-wrap);
+    position: relative;
     overflow: hidden;
     border-radius: 10px;
-    border: 1px solid black;
-    width: 350px;
+    border: 1px solid var(--color-border);
+    width: 450px;
+    padding-top: 40px;
 }
 
 .calc, .result{
     text-align: right;
     outline: none;
     border: none;
-    background-color: rgb(24, 31, 52);
-    color: white;
+    background-color: var(--color-bg-wrap);
+    color: var(--text-color);
     padding: 30px 5px;
     width: 100%;
     box-sizing: border-box;
@@ -48,14 +71,49 @@ body{
 }
 
 .btn{
-    color: white;
-    border: 1px inset rgb(24, 31, 52);
+    color: var(--text-color);
+    border: 1px inset var(--color-border);
     font-weight: bold;
     font-size: 24px;
-    background-color: rgb(38, 50, 87);
+    background-color: var(--color-bg-btn);
 }
 
 .btn:active{
-    border: 3px inset rgb(24, 31, 52);
+    border: 3px inset var(--color-border);
 }
 
+.app__theme {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    display: flex;
+    align-items: center;
+}
+
+.app__toggles {
+    position: relative;
+    width: 50px;
+    padding: 5px;
+    border-radius: 50px;
+    background: var(--color-toggle-bg);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.app__toggle {
+    display: block;
+    cursor: pointer;
+    -webkit-appearance: none;
+}
+.app__toggle::before {
+    border-radius: 50px;
+    content: "";
+    display: block;
+    height: 16px;
+    width: 16px;
+}
+.app__toggle:checked:before {
+    transition: background 0.5s linear;
+    background: var(--color-toggle);
+}
