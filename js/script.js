@@ -27,7 +27,7 @@ darkTheme.forEach(toggle => {
 })
 
 const number = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '0', '.'];
-const operation = ['C', '÷', '%', '←', '×', '−', '+', '=']
+const operation = ['C', '/', '%', '<-', '*', '-', '+', '=']
 let first = '', second = '', sign= '', results;
 
 function clickNumber(key){
@@ -59,7 +59,7 @@ function clickOperation(key){
         first = '', second = '', sign= '', results ='';
         calc.value = '';
         console.log(first, second, sign)
-    }  else if(key === '←'){
+    }  else if(key === '<-'){
         if(second!== ''){
             second = second.slice(0,-1);
         } else if(sign!==''){
@@ -71,7 +71,7 @@ function clickOperation(key){
         console.log(first, second, sign)
     } else if(first!=='' && second!==''){
         switch(sign){
-            case '÷':{
+            case '/':{
                 if(+second === 0){
                     calc.value = "Ошибка";
                     first = '';
@@ -86,7 +86,7 @@ function clickOperation(key){
                 first = first/100*second;
                 break;
             }
-            case '×':{
+            case '*':{
                 first = first*second;
                 break;
             }
@@ -94,7 +94,7 @@ function clickOperation(key){
                 first = +first+ +second;
                 break;
             }
-            case '−':{
+            case '-':{
                 first = first-second;
                 break;
             }
